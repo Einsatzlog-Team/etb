@@ -1,0 +1,4 @@
+*.asc
+*.gpg
+*-private.asc
+*-public.asc
