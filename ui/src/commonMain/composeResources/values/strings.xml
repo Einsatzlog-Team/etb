@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Einsatzlog</string>
+
+    <string name="home_empty_title">Noch kein Einsatz</string>
+    <string name="home_empty_body">Das Einsatztagebuch dokumentiert den Funkverkehr eines Einsatzes – jede Meldung mit Zeit, Absender und Empfänger. Lege deinen ersten Einsatz an.</string>
+    <string name="home_empty_cta">Einsatz anlegen</string>
+    <string name="home_demo_cta">Demo-Einsatz ansehen</string>
+    <string name="home_demo_name">Demo: Zimmerbrand Hauptstraße 45</string>
+    <string name="home_search_hint">Einsätze durchsuchen</string>
+    <string name="home_no_results">Keine Einsätze gefunden.</string>
+    <string name="home_delete">Löschen</string>
+    <string name="home_delete_done">Einsatz gelöscht</string>
+    <string name="home_delete_undo">Rückgängig</string>
+
+    <string name="home_create_title">Neuer Einsatz</string>
+    <string name="home_create_name_label">Name des Einsatzes</string>
+    <string name="home_create_description_label">Beschreibung (optional)</string>
+    <string name="home_create_confirm">Anlegen</string>
+    <string name="home_create_cancel">Abbrechen</string>
+
+    <string name="einsatz_active">aktiv</string>
+    <plurals name="einsatz_entry_count">
+        <item quantity="one">%1$d Eintrag</item>
+        <item quantity="other">%1$d Einträge</item>
+    </plurals>
+
+    <string name="logbook_back">Zurück</string>
+    <string name="logbook_close">Beenden</string>
+    <string name="logbook_reopen">Wieder öffnen</string>
+    <string name="logbook_closed">Einsatz beendet – Einträge sind schreibgeschützt.</string>
+    <string name="logbook_started_at">Beginn:</string>
+    <string name="logbook_ended_at">Ende:</string>
+    <string name="logbook_empty">Noch keine Einträge. Der erste Funkspruch wird hier dokumentiert.</string>
+    <string name="logbook_new_entry">Neuer Eintrag</string>
+    <string name="logbook_export">Als PDF exportieren</string>
+
+    <string name="entry_title">Neuer Eintrag</string>
+    <string name="entry_time_label">Zeit:</string>
+    <string name="entry_backdate_1">−1 Min</string>
+    <string name="entry_backdate_5">−5 Min</string>
+    <string name="entry_backdate_reset">jetzt</string>
+    <string name="entry_source_label">Von</string>
+    <string name="entry_target_label">Zu</string>
+    <string name="entry_message_label">Meldung</string>
+    <string name="entry_submit">Eintrag einfügen</string>
+
+    <string name="support_title">Unterstützen</string>
+    <string name="support_intro_title">Einsatzlog bleibt kostenlos</string>
+    <string name="support_intro_body">Feuerwehren haben kein App-Budget – und brauchen auch keins. Einsatzlog ist und bleibt für alle kostenlos. Wenn dir die App hilft, kannst du das Projekt freiwillig unterstützen.</string>
+    <string name="support_tier_small">Kleine Spende</string>
+    <string name="support_tier_medium">Mittlere Spende</string>
+    <string name="support_tier_large">Große Spende</string>
+    <string name="support_tier_sub">Unterstützer-Abo</string>
+    <string name="support_sub_note">Monatlich, jederzeit kündbar – 7 Tage kostenlos testen</string>
+    <string name="support_restore">Käufe wiederherstellen</string>
+    <string name="support_thanks_title">Danke für deine Unterstützung!</string>
+    <string name="support_thanks_body">Du hilfst mit, Einsatzlog für alle Feuerwehren kostenlos zu halten.</string>
+    <string name="support_badge">Unterstützer</string>
+    <string name="support_unavailable">In dieser Version stehen keine Käufe zur Verfügung. Die App ist und bleibt voll funktionsfähig.</string>
+    <string name="support_payment_pending">Zahlung ausstehend – wird nach Bestätigung aktiviert.</string>
+
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_support">Einsatzlog unterstützen</string>
+    <string name="settings_website">einsatzlog.de</string>
+    <string name="settings_contact">Kontakt</string>
+    <string name="settings_legal">Rechtliches</string>
+    <string name="settings_privacy">Datenschutz</string>
+    <string name="settings_imprint">Impressum</string>
+    <string name="settings_licenses">Open-Source-Lizenzen</string>
+    <string name="privacy_body">Einsatzlog speichert alle Einsatzdaten ausschließlich lokal auf diesem Gerät. Es gibt keine Konten, kein Tracking und keine Werbung.\n\nIn der Store-Version werden freiwillige Käufe über RevenueCat abgewickelt; dabei werden Kaufdaten gemäß deren Datenschutzerklärung verarbeitet. Die FOSS-Version überträgt keinerlei Daten.\n\nPDF-Exporte verlassen das Gerät nur, wenn du sie selbst teilst.</string>
+    <string name="privacy_link">Vollständige Datenschutzerklärung öffnen</string>
+    <string name="imprint_body">Angaben gemäß § 5 DDG\n\n[NAME – wird vor Veröffentlichung ergänzt]\n[STRASSE, HAUSNUMMER]\n[PLZ ORT]\nDeutschland\n\nE-Mail: kontakt@einsatzlog.de\n\nHinweis: Dieses Impressum wird vor der Store-Veröffentlichung vervollständigt.</string>
+</resources>

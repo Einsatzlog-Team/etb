@@ -1,3 +1,29 @@
+# Gradle / build
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.kotlin/
+
+# Secrets — never commit
+keystore.properties
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+
+# Xcode
+iosApp/build/
+DerivedData/
+*.xcuserdata*
+
+# OS
+.DS_Store
+
+# GPG key exports — never commit
 *.asc
 *.gpg
 *-private.asc

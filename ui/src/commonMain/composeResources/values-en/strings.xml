@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Incident Log</string>
+
+    <string name="home_empty_title">No incidents yet</string>
+    <string name="home_empty_body">The incident log documents an incident’s radio traffic – every message with time, sender, and receiver. Create your first incident.</string>
+    <string name="home_empty_cta">Create incident</string>
+    <string name="home_demo_cta">View demo incident</string>
+    <string name="home_demo_name">Demo: Room fire at 45 Main Street</string>
+    <string name="home_search_hint">Search incidents</string>
+    <string name="home_no_results">No incidents found.</string>
+    <string name="home_delete">Delete</string>
+    <string name="home_delete_done">Incident deleted</string>
+    <string name="home_delete_undo">Undo</string>
+
+    <string name="home_create_title">New incident</string>
+    <string name="home_create_name_label">Incident name</string>
+    <string name="home_create_description_label">Description (optional)</string>
+    <string name="home_create_confirm">Create</string>
+    <string name="home_create_cancel">Cancel</string>
+
+    <string name="einsatz_active">active</string>
+    <plurals name="einsatz_entry_count">
+        <item quantity="one">%1$d entry</item>
+        <item quantity="other">%1$d entries</item>
+    </plurals>
+
+    <string name="logbook_back">Back</string>
+    <string name="logbook_close">Close</string>
+    <string name="logbook_reopen">Reopen</string>
+    <string name="logbook_closed">Incident closed – entries are read-only.</string>
+    <string name="logbook_started_at">Started:</string>
+    <string name="logbook_ended_at">Ended:</string>
+    <string name="logbook_empty">No entries yet. The first radio message will be documented here.</string>
+    <string name="logbook_new_entry">New entry</string>
+    <string name="logbook_export">Export as PDF</string>
+
+    <string name="entry_title">New entry</string>
+    <string name="entry_time_label">Time:</string>
+    <string name="entry_backdate_1">−1 min</string>
+    <string name="entry_backdate_5">−5 min</string>
+    <string name="entry_backdate_reset">now</string>
+    <string name="entry_source_label">From</string>
+    <string name="entry_target_label">To</string>
+    <string name="entry_message_label">Message</string>
+    <string name="entry_submit">Add entry</string>
+
+    <string name="support_title">Support</string>
+    <string name="support_intro_title">Incident Log stays free</string>
+    <string name="support_intro_body">Fire departments don’t always have budgets for apps – and shouldn’t need them. Incident Log is and stays free for everyone. If the app helps you, you can support the project voluntarily.</string>
+    <string name="support_tier_small">Small donation</string>
+    <string name="support_tier_medium">Medium donation</string>
+    <string name="support_tier_large">Large donation</string>
+    <string name="support_tier_sub">Supporter subscription</string>
+    <string name="support_sub_note">Monthly, cancel anytime – 7-day free trial</string>
+    <string name="support_restore">Restore purchases</string>
+    <string name="support_thanks_title">Thank you for your support!</string>
+    <string name="support_thanks_body">You help keep Incident Log free for every fire department.</string>
+    <string name="support_badge">Supporter</string>
+    <string name="support_unavailable">Purchases are not available in this version. The app is and stays fully functional.</string>
+    <string name="support_payment_pending">Payment pending – will activate once confirmed.</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_support">Support Incident Log</string>
+    <string name="settings_website">einsatzlog.de</string>
+    <string name="settings_contact">Contact</string>
+    <string name="settings_legal">Legal</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_imprint">Imprint</string>
+    <string name="settings_licenses">Open source licenses</string>
+    <string name="privacy_body">Incident Log stores all incident data exclusively on this device. There are no accounts, no tracking, and no ads.\n\nIn the store version, voluntary purchases are processed via RevenueCat; purchase data is handled according to their privacy policy. The FOSS version transmits no data at all.\n\nPDF exports only leave the device when you share them yourself.</string>
+    <string name="privacy_link">Open the full privacy policy</string>
+    <string name="imprint_body">Information according to § 5 DDG (German law)\n\n[NAME – added before release]\n[STREET, NO.]\n[ZIP CITY]\nGermany\n\nEmail: kontakt@einsatzlog.de\n\nNote: this imprint will be completed before the store release.</string>
+</resources>
