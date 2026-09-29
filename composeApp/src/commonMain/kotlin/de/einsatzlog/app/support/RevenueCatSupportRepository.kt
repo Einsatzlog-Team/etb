@@ -23,6 +23,10 @@ class RevenueCatSupportRepository : SupportRepository {
         const val PKG_SMALL = "support_small"
         const val PKG_MEDIUM = "support_medium"
         const val PKG_LARGE = "support_large"
+        const val PRODUCT_SMALL = "etb_support_small"
+        const val PRODUCT_MEDIUM = "etb_support_medium"
+        const val PRODUCT_LARGE = "etb_support_large"
+        const val PRODUCT_SUBSCRIPTION = "etb_supporter"
     }
 
     override val isAvailable: Boolean = true
@@ -90,11 +94,21 @@ class RevenueCatSupportRepository : SupportRepository {
     private fun toStatus(info: CustomerInfo) =
         SupporterStatus(isSupporter = info.entitlements.active.containsKey(ENTITLEMENT_SUPPORTER))
 
-    private fun tierFor(pkg: Package): SupportTier? = when (pkg.identifier) {
-        PKG_SMALL -> SupportTier.SMALL
-        PKG_MEDIUM -> SupportTier.MEDIUM
-        PKG_LARGE -> SupportTier.LARGE
-        "\$rc_monthly" -> SupportTier.SUBSCRIPTION
-        else -> null
-    }
+    // Store product IDs are fixed and identical across stores; package identifiers
+    // are free-form dashboard names, so they are only the fallback.
+    // Play subscription IDs arrive as "product:basePlan" — compare the product part.
+    private fun tierFor(pkg: Package): SupportTier? =
+        when (pkg.storeProduct.id.substringBefore(':')) {
+            PRODUCT_SMALL -> SupportTier.SMALL
+            PRODUCT_MEDIUM -> SupportTier.MEDIUM
+            PRODUCT_LARGE -> SupportTier.LARGE
+            PRODUCT_SUBSCRIPTION -> SupportTier.SUBSCRIPTION
+            else -> when (pkg.identifier) {
+                PKG_SMALL -> SupportTier.SMALL
+                PKG_MEDIUM -> SupportTier.MEDIUM
+                PKG_LARGE -> SupportTier.LARGE
+                "\$rc_monthly" -> SupportTier.SUBSCRIPTION
+                else -> null
+            }
+        }
 }
