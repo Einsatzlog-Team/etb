@@ -41,12 +41,10 @@ private val entryFormState = EntryFormState(
     targetSuggestions = listOf("Leitstelle", "EL", "Wassertrupp", "RTW"),
 )
 
+// Mirrors what ships: one tier (etb_support_small) — store images must match the app.
 private val supportState = SupportUiState.Loaded(
     products = listOf(
-        SupportProduct(SupportTier.SMALL, "tip.small", "Kleine Spende", "2,99\u00a0\u20ac"),
-        SupportProduct(SupportTier.MEDIUM, "tip.medium", "Mittlere Spende", "5,99\u00a0\u20ac"),
-        SupportProduct(SupportTier.LARGE, "tip.large", "Gro\u00dfe Spende", "11,99\u00a0\u20ac"),
-        SupportProduct(SupportTier.SUBSCRIPTION, "sub.monthly", "Monatlich", "1,99\u00a0\u20ac / Monat"),
+        SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Spende", "1,99\u00a0\u20ac"),
     ),
     isSupporter = false,
 )

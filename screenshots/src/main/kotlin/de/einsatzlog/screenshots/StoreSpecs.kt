@@ -45,14 +45,8 @@ val PLAY_TABLET = DeviceSpec("play-tablet", 1620, 2880, 2f, Store.PLAY, "tenInch
 /** 6.9" iPhone — the one iPhone set Apple scales down for every smaller model. */
 val IOS_IPHONE_69 = DeviceSpec("ios-iphone-6.9", 1320, 2868, 3f, Store.APP_STORE)
 
-/**
- * 13" iPad. Required because `iosApp.xcodeproj` sets
- * `TARGETED_DEVICE_FAMILY = "1,2"`; drop this entry if the app ever goes
- * iPhone-only, and change the device family to "1" in the same commit.
- */
-val IOS_IPAD_13 = DeviceSpec("ios-ipad-13", 2064, 2752, 2f, Store.APP_STORE)
-
-val ALL_DEVICES = listOf(PLAY_PHONE, PLAY_TABLET, IOS_IPHONE_69, IOS_IPAD_13)
+// iOS ships iPhone-only (TARGETED_DEVICE_FAMILY = 1), so no 13" iPad set.
+val ALL_DEVICES = listOf(PLAY_PHONE, PLAY_TABLET, IOS_IPHONE_69)
 
 /**
  * Play and App Store Connect both key listings by these codes. They also
