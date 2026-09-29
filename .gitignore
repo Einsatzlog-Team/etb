@@ -28,3 +28,8 @@ DerivedData/
 *.gpg
 *-private.asc
 *-public.asc
+
+# Store / RevenueCat credentials — never commit
+*.p8
+revenuecat-key.json
+*service-account*.json

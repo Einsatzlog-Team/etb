@@ -34,6 +34,14 @@ support") screen powered by RevenueCat, PDF export, and settings + compliance.
 - iOS: open `iosApp/iosApp.xcodeproj` in Xcode (needs a Mac)
 - Tests: `./gradlew :composeApp:testStoreDebugUnitTest`
 - Release signing reads a gitignored `keystore.properties`; RevenueCat uses *public* SDK keys only.
+- RevenueCat keys are not in the repo. Without them the build works and the support screen shows
+  "unavailable". To enable purchases, add to the gitignored `local.properties` (or pass
+  `-Prevenuecat.androidKey=…` / set `REVENUECAT_ANDROID_KEY`):
+  ```properties
+  revenuecat.androidKey=goog_…
+  revenuecat.iosKey=appl_…
+  ```
+  A Test Store key (`test_…`) works for local testing; release builds refuse it.
 
 ## License
 
