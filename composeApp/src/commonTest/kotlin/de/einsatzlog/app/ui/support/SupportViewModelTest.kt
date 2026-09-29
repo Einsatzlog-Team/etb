@@ -48,7 +48,7 @@ class SupportViewModelTest {
     fun tearDown() = Dispatchers.resetMain()
 
     private val demoProducts = listOf(
-        SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Spende", "1,99 €"),
+        SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Unterstützung", "1,99 €"),
         SupportProduct(SupportTier.SUBSCRIPTION, "etb_supporter", "Unterstützer-Abo", "0,99 €"),
     )
 

@@ -44,7 +44,7 @@ private val entryFormState = EntryFormState(
 // Mirrors what ships: one tier (etb_support_small) — store images must match the app.
 private val supportState = SupportUiState.Loaded(
     products = listOf(
-        SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Spende", "1,99\u00a0\u20ac"),
+        SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Unterstützung", "1,99\u00a0\u20ac"),
     ),
     isSupporter = false,
 )

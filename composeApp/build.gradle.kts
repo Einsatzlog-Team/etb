@@ -17,7 +17,7 @@ plugins {
 // version is pinned here instead of being derived from git. Bump both on each
 // release; CI/local builds may still override with -PversionCode / -PversionName:
 //   ./gradlew :composeApp:bundleStoreRelease -PversionCode=42
-val gitVersionCode: Int = (findProperty("versionCode") as String?)?.toIntOrNull() ?: 30
+val gitVersionCode: Int = (findProperty("versionCode") as String?)?.toIntOrNull() ?: 31
 val gitVersionName: String = (findProperty("versionName") as String?) ?: "0.1.4"
 
 // RevenueCat public SDK keys stay out of git: a fork or CI build without them

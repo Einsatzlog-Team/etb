@@ -84,14 +84,14 @@ private fun SuggestionChipRowPreviewDark() = PreviewSurface(dark = true, width =
     SuggestionChipRow(suggestions = listOf("ELW", "Florian 1", "Leitstelle"), onPick = {})
 }
 
-// --- SupportTierCard: a donation tier and the subscription ---
+// --- SupportTierCard: a support tier and the subscription ---
 
 @Preview
 @Composable
 private fun SupportTierCardPreviewLight() = PreviewSurface(dark = false, width = PREVIEW_WIDTH) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         SupportTierCard(
-            title = "Kleine Spende",
+            title = "Kleine Unterstützung",
             subtitle = "Ein Kaffee für die nächste Nachtschicht am Code",
             priceLabel = "1,99 €",
             busy = false,
@@ -104,12 +104,12 @@ private fun SupportTierCardPreviewLight() = PreviewSurface(dark = false, width =
             busy = false,
             onClick = {},
         )
-        SupportTierCard(title = "Mittlere Spende", subtitle = null, priceLabel = "4,99 €", busy = true, onClick = {}, hearts = 2)
+        SupportTierCard(title = "Mittlere Unterstützung", subtitle = null, priceLabel = "4,99 €", busy = true, onClick = {}, hearts = 2)
     }
 }
 
 @Preview
 @Composable
 private fun SupportTierCardPreviewDark() = PreviewSurface(dark = true, width = PREVIEW_WIDTH) {
-    SupportTierCard(title = "Große Spende", subtitle = null, priceLabel = "9,99 €", busy = false, onClick = {}, hearts = 3)
+    SupportTierCard(title = "Große Unterstützung", subtitle = null, priceLabel = "9,99 €", busy = false, onClick = {}, hearts = 3)
 }

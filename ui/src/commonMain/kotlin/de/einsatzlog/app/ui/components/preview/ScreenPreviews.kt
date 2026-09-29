@@ -128,9 +128,9 @@ private fun EntryFormContentPreviewDark() = ScreenFrame(dark = true) {
 // --- Support ---
 
 private val previewSupportProducts = listOf(
-    SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Spende", "1,99 €"),
-    SupportProduct(SupportTier.MEDIUM, "etb_support_medium", "Mittlere Spende", "4,99 €"),
-    SupportProduct(SupportTier.LARGE, "etb_support_large", "Große Spende", "9,99 €"),
+    SupportProduct(SupportTier.SMALL, "etb_support_small", "Kleine Unterstützung", "1,99 €"),
+    SupportProduct(SupportTier.MEDIUM, "etb_support_medium", "Mittlere Unterstützung", "4,99 €"),
+    SupportProduct(SupportTier.LARGE, "etb_support_large", "Große Unterstützung", "9,99 €"),
     SupportProduct(SupportTier.SUBSCRIPTION, "etb_supporter", "Unterstützer-Abo", "0,99 €"),
 )
 

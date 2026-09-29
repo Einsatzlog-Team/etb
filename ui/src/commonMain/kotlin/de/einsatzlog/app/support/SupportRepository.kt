@@ -21,7 +21,7 @@ sealed interface PurchaseOutcome {
 }
 
 /**
- * Seam for the supporter/donation monetization (spec 004). The RevenueCat
+ * Seam for the voluntary supporter monetization (spec 004). The RevenueCat
  * implementation arrives with slice 3 in the `store` build; `foss` keeps [NoopSupportRepository].
  */
 interface SupportRepository {

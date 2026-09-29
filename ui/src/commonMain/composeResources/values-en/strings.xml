@@ -47,9 +47,9 @@
     <string name="support_title">Support</string>
     <string name="support_intro_title">Incident Log stays free</string>
     <string name="support_intro_body">Fire departments don’t always have budgets for apps – and shouldn’t need them. Incident Log is and stays free for everyone. If the app helps you, you can support the project voluntarily.</string>
-    <string name="support_tier_small">Small donation</string>
-    <string name="support_tier_medium">Medium donation</string>
-    <string name="support_tier_large">Large donation</string>
+    <string name="support_tier_small">Small tip</string>
+    <string name="support_tier_medium">Medium tip</string>
+    <string name="support_tier_large">Large tip</string>
     <string name="support_tier_sub">Supporter subscription</string>
     <string name="support_sub_note">Monthly, cancel anytime – 7-day free trial</string>
     <string name="support_restore">Restore purchases</string>

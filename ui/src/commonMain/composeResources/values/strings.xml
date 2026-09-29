@@ -47,9 +47,9 @@
     <string name="support_title">Unterstützen</string>
     <string name="support_intro_title">Einsatzlog bleibt kostenlos</string>
     <string name="support_intro_body">Feuerwehren haben kein App-Budget – und brauchen auch keins. Einsatzlog ist und bleibt für alle kostenlos. Wenn dir die App hilft, kannst du das Projekt freiwillig unterstützen.</string>
-    <string name="support_tier_small">Kleine Spende</string>
-    <string name="support_tier_medium">Mittlere Spende</string>
-    <string name="support_tier_large">Große Spende</string>
+    <string name="support_tier_small">Kleine Unterstützung</string>
+    <string name="support_tier_medium">Mittlere Unterstützung</string>
+    <string name="support_tier_large">Große Unterstützung</string>
     <string name="support_tier_sub">Unterstützer-Abo</string>
     <string name="support_sub_note">Monatlich, jederzeit kündbar – 7 Tage kostenlos testen</string>
     <string name="support_restore">Käufe wiederherstellen</string>
