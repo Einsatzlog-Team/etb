@@ -58,6 +58,12 @@
     <string name="support_badge">Supporter</string>
     <string name="support_unavailable">Purchases are not available in this version. The app is and stays fully functional.</string>
     <string name="support_payment_pending">Payment pending – will activate once confirmed.</string>
+    <string name="support_tier_small_note">A coffee for the next late-night coding session</string>
+    <string name="support_tier_medium_note">Helps build new features</string>
+    <string name="support_tier_large_note">A big boost for development</string>
+    <string name="support_choose">Choose your contribution</string>
+    <string name="support_again">Support again</string>
+    <string name="support_promise">Every feature stays free – promise.</string>
 
     <string name="settings_title">Settings</string>
     <string name="settings_version">Version</string>

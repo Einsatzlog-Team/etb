@@ -90,7 +90,13 @@ private fun SuggestionChipRowPreviewDark() = PreviewSurface(dark = true, width =
 @Composable
 private fun SupportTierCardPreviewLight() = PreviewSurface(dark = false, width = PREVIEW_WIDTH) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        SupportTierCard(title = "Kleine Spende", subtitle = null, priceLabel = "1,99 €", busy = false, onClick = {})
+        SupportTierCard(
+            title = "Kleine Spende",
+            subtitle = "Ein Kaffee für die nächste Nachtschicht am Code",
+            priceLabel = "1,99 €",
+            busy = false,
+            onClick = {},
+        )
         SupportTierCard(
             title = "Unterstützer-Abo",
             subtitle = "Monatlich, jederzeit kündbar – 7 Tage kostenlos testen",
@@ -98,12 +104,12 @@ private fun SupportTierCardPreviewLight() = PreviewSurface(dark = false, width =
             busy = false,
             onClick = {},
         )
-        SupportTierCard(title = "Mittlere Spende", subtitle = null, priceLabel = "4,99 €", busy = true, onClick = {})
+        SupportTierCard(title = "Mittlere Spende", subtitle = null, priceLabel = "4,99 €", busy = true, onClick = {}, hearts = 2)
     }
 }
 
 @Preview
 @Composable
 private fun SupportTierCardPreviewDark() = PreviewSurface(dark = true, width = PREVIEW_WIDTH) {
-    SupportTierCard(title = "Große Spende", subtitle = null, priceLabel = "9,99 €", busy = false, onClick = {})
+    SupportTierCard(title = "Große Spende", subtitle = null, priceLabel = "9,99 €", busy = false, onClick = {}, hearts = 3)
 }

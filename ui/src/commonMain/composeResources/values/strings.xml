@@ -58,6 +58,12 @@
     <string name="support_badge">Unterstützer</string>
     <string name="support_unavailable">In dieser Version stehen keine Käufe zur Verfügung. Die App ist und bleibt voll funktionsfähig.</string>
     <string name="support_payment_pending">Zahlung ausstehend – wird nach Bestätigung aktiviert.</string>
+    <string name="support_tier_small_note">Ein Kaffee für die nächste Nachtschicht am Code</string>
+    <string name="support_tier_medium_note">Hilft, neue Funktionen zu bauen</string>
+    <string name="support_tier_large_note">Ein großer Schub für die Weiterentwicklung</string>
+    <string name="support_choose">Wähle deinen Beitrag</string>
+    <string name="support_again">Noch einmal unterstützen</string>
+    <string name="support_promise">Alle Funktionen bleiben kostenlos – versprochen.</string>
 
     <string name="settings_title">Einstellungen</string>
     <string name="settings_version">Version</string>
