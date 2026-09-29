@@ -48,6 +48,7 @@ kotlin {
             implementation(libs.sqlite.bundled)
 
             implementation(libs.purchases.kmp.core)
+            implementation(libs.purchases.kmp.ui)
             implementation(libs.aboutlibraries.compose.m3)
 
             implementation(project.dependencies.platform(libs.koin.bom))

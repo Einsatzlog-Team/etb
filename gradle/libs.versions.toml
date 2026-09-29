@@ -35,6 +35,7 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 compose-material-icons-core = { module = "org.jetbrains.compose.material:material-icons-core", version = "1.7.3" } # frozen artifact, icons only — avoids the multi-MB extended set in unminified builds
 
 purchases-kmp-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version = "3.3.0" }
+purchases-kmp-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version = "3.3.0" }
 aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
