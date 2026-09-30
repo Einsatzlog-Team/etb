@@ -70,9 +70,9 @@ appId: de.einsatzlog.app
       - waitForAnimationToEnd
       - tapOn: "Small tip"
       - extendedWaitUntil:
-          visible: "Buy|1-tap buy|Kaufen"
+          visible: "Buy|1-tap buy|Kaufen|TEST VALID PURCHASE"
           timeout: 30000
-      - tapOn: "Buy|1-tap buy|Kaufen"
+      - tapOn: "Buy|1-tap buy|Kaufen|TEST VALID PURCHASE"
       - extendedWaitUntil:
           visible: "Thank you for your support!"
           timeout: 60000

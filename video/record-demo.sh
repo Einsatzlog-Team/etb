@@ -17,11 +17,15 @@ mkdir -p "$OUT"
 android() {  # $1 = light|dark
   local a=(adb -s "$ANDROID_SERIAL") f="$OUT/android-$1-en.mp4"
   "${a[@]}" shell pm clear de.einsatzlog.app >/dev/null   # empty app for every take
+  # Emulators report a hardware keyboard; show the normal on-screen keyboard instead
+  # of the floating IME toolbar that would cover the form.
+  "${a[@]}" shell settings put secure show_ime_with_hard_keyboard 1
   "${a[@]}" shell cmd uimode night "$([ "$1" = dark ] && echo yes || echo no)"
   "${a[@]}" shell cmd locale set-app-locales de.einsatzlog.app --locales en-US >/dev/null 2>&1 || true
-  # Clean status bar (demo mode): full battery, full signal, no notifications.
+  # Clean status bar (demo mode): current time, full battery, full signal, no notifications.
   "${a[@]}" shell settings put global sysui_demo_allowed 1
   "${a[@]}" shell am broadcast -a com.android.systemui.demo -e command enter >/dev/null
+  "${a[@]}" shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm "$(date +%H%M)" >/dev/null
   "${a[@]}" shell am broadcast -a com.android.systemui.demo -e command battery -e level 100 -e plugged false >/dev/null
   "${a[@]}" shell am broadcast -a com.android.systemui.demo -e command network -e wifi show -e level 4 >/dev/null
   "${a[@]}" shell am broadcast -a com.android.systemui.demo -e command notifications -e visible false >/dev/null
