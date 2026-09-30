@@ -48,7 +48,7 @@ val demoZimmerbrand = einsatz(
 val demoEinsaetze = listOf(
     demoZimmerbrand,
     einsatz(
-        "e-vu", "Verkehrsunfall B3, Abfahrt Traisa",
+        "e-vu", "Verkehrsunfall B3, Abfahrt Nord",
         "Zwei Fahrzeuge · eine Person eingeklemmt",
         1_784_265_120_000L, 94,
     ),
@@ -69,7 +69,7 @@ val demoEinsaetze = listOf(
     ),
     einsatz(
         "e-uebung", "Übung: Menschenrettung Brandhaus",
-        "Jahresübung der FF Traisa",
+        "Jahresübung der Feuerwehr",
         1_783_148_400_000L, 180,
     ),
 )
