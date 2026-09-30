@@ -40,6 +40,7 @@ kotlin {
             api(compose.components.resources)
             api(compose.components.uiToolingPreview)
             api(libs.compose.material.icons.core)
+            api(libs.compose.material3.adaptive)
 
             api(libs.kotlinx.coroutines.core)
             api(libs.kotlinx.datetime)

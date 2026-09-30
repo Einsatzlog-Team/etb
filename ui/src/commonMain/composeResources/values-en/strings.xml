@@ -5,6 +5,7 @@
     <string name="home_empty_body">The incident log documents an incident’s radio traffic – every message with time, sender, and receiver. Create your first incident.</string>
     <string name="home_empty_cta">Create incident</string>
     <string name="home_demo_cta">View demo incident</string>
+    <string name="home_select_incident">Select an incident on the left.</string>
     <string name="home_demo_name">Demo: Room fire at 45 Main Street</string>
     <string name="home_search_hint">Search incidents</string>
     <string name="home_no_results">No incidents found.</string>

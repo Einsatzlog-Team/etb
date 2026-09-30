@@ -5,6 +5,7 @@
     <string name="home_empty_body">Das Einsatztagebuch dokumentiert den Funkverkehr eines Einsatzes – jede Meldung mit Zeit, Absender und Empfänger. Lege deinen ersten Einsatz an.</string>
     <string name="home_empty_cta">Einsatz anlegen</string>
     <string name="home_demo_cta">Demo-Einsatz ansehen</string>
+    <string name="home_select_incident">Wähle links einen Einsatz aus.</string>
     <string name="home_demo_name">Demo: Zimmerbrand Hauptstraße 45</string>
     <string name="home_search_hint">Einsätze durchsuchen</string>
     <string name="home_no_results">Keine Einsätze gefunden.</string>

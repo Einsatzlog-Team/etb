@@ -1,12 +1,18 @@
 package de.einsatzlog.app
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.savedstate.read
 import de.einsatzlog.app.ui.entry.EntryFormScreen
 import de.einsatzlog.app.ui.home.HomeScreen
+import de.einsatzlog.app.ui.logbook.LogbookPane
 import de.einsatzlog.app.ui.logbook.LogbookScreen
 import de.einsatzlog.app.core.appVersionName
 import de.einsatzlog.app.ui.settings.ImprintScreen
@@ -14,7 +20,14 @@ import de.einsatzlog.app.ui.settings.LicensesScreen
 import de.einsatzlog.app.ui.settings.PrivacyScreen
 import de.einsatzlog.app.ui.settings.SettingsScreen
 import de.einsatzlog.app.ui.support.SupportScreen
+import de.einsatzlog.app.ui.components.templates.EmptyDetail
+import de.einsatzlog.app.ui.components.templates.LayoutClass
+import de.einsatzlog.app.ui.components.templates.ListDetailTemplate
+import de.einsatzlog.app.ui.components.templates.currentLayoutClass
 import de.einsatzlog.app.ui.theme.EinsatzlogTheme
+import einsatzlog.ui.generated.resources.Res
+import einsatzlog.ui.generated.resources.home_select_incident
+import org.jetbrains.compose.resources.stringResource
 
 object Routes {
     const val HOME = "home"
@@ -41,11 +54,41 @@ fun App(supportEnabled: Boolean = true) {
             if (supportEnabled) ({ navController.navigate(Routes.SUPPORT) }) else null
         NavHost(navController = navController, startDestination = Routes.HOME) {
             composable(Routes.HOME) {
-                HomeScreen(
-                    onOpenEinsatz = { id -> navController.navigate(Routes.einsatz(id)) },
-                    onOpenSupport = openSupport,
-                    onOpenSettings = { navController.navigate(Routes.SETTINGS) },
-                )
+                val layout = currentLayoutClass()
+                if (layout == LayoutClass.COMPACT) {
+                    HomeScreen(
+                        onOpenEinsatz = { id -> navController.navigate(Routes.einsatz(id)) },
+                        onOpenSupport = openSupport,
+                        onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                    )
+                } else {
+                    // Tablet: list and logbook side by side, no navigation between them.
+                    var selected by rememberSaveable { mutableStateOf<String?>(null) }
+                    ListDetailTemplate(
+                        list = {
+                            HomeScreen(
+                                onOpenEinsatz = { id -> selected = id },
+                                onOpenSupport = openSupport,
+                                onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                            )
+                        },
+                        detail = {
+                            val id = selected
+                            if (id == null) {
+                                EmptyDetail(stringResource(Res.string.home_select_incident))
+                            } else {
+                                key(id) {
+                                    LogbookPane(
+                                        einsatzId = id,
+                                        layout = layout,
+                                        onClose = { selected = null },
+                                        onNewEntryFullScreen = { navController.navigate(Routes.newEntry(id)) },
+                                    )
+                                }
+                            }
+                        },
+                    )
+                }
             }
             composable(Routes.SUPPORT) {
                 SupportScreen(onBack = { navController.popBackStack() })

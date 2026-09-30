@@ -11,7 +11,7 @@ import org.koin.core.parameter.parametersOf
 fun LogbookScreen(
     einsatzId: String,
     onBack: () -> Unit,
-    onNewEntry: () -> Unit,
+    onNewEntry: (() -> Unit)?,
     viewModel: LogbookViewModel = koinViewModel(parameters = { parametersOf(einsatzId) }),
 ) {
     val state by viewModel.uiState.collectAsState()

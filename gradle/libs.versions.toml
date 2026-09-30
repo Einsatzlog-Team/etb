@@ -32,6 +32,7 @@ koin-android = { module = "io.insert-koin:koin-android" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 
+compose-material3-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version = "1.2.0" } # window size classes for tablet layouts
 compose-material-icons-core = { module = "org.jetbrains.compose.material:material-icons-core", version = "1.7.3" } # frozen artifact, icons only — avoids the multi-MB extended set in unminified builds
 
 purchases-kmp-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version = "3.3.0" }

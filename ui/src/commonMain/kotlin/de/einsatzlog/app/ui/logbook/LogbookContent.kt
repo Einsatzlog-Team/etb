@@ -40,7 +40,8 @@ fun LogbookContent(
     onBack: () -> Unit,
     onExport: () -> Unit,
     onToggleClose: () -> Unit,
-    onNewEntry: () -> Unit,
+    /** Null hides the button – the tablet layout has a permanent entry pane instead. */
+    onNewEntry: (() -> Unit)?,
 ) {
     Scaffold(
         topBar = {
@@ -71,7 +72,7 @@ fun LogbookContent(
             )
         },
         floatingActionButton = {
-            if (einsatz != null && !isClosed) {
+            if (einsatz != null && !isClosed && onNewEntry != null) {
                 ExtendedFloatingActionButton(onClick = onNewEntry) {
                     Text(stringResource(Res.string.logbook_new_entry))
                 }
