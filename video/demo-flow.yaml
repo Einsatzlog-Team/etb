@@ -32,9 +32,11 @@ appId: de.einsatzlog.app
       - tapOn: "Car fire on the B3"
 - tapOn: "New entry"
 - tapOn: "Situation report|Lagemeldung"
-- tapOn: "Florian 1"          # learned call sign, one tap
-- tapOn: "To"
-- inputText: "Leitstelle"
+- tapOn: "Florian 1"          # From: learned call sign, one tap
+- tapOn:                      # To: chip in the row below the To field
+    text: "Leitstelle"
+    below:
+      text: "To"
 - scrollUntilVisible:
     element: "Message"
     direction: DOWN
@@ -44,9 +46,11 @@ appId: de.einsatzlog.app
 - waitForAnimationToEnd
 - tapOn: "New entry"
 - tapOn: "Order|Auftrag"
-- tapOn: "Einsatzleiter"
-- tapOn: "To"
-- inputText: "Florian 1"
+- tapOn: "Einsatzleiter"      # From chip
+- tapOn:                      # To chip, re-ranked for this sender
+    text: "Trupp 1"
+    below:
+      text: "To"
 - scrollUntilVisible:
     element: "Message"
     direction: DOWN
@@ -55,6 +59,47 @@ appId: de.einsatzlog.app
 - tapOn: "Add entry"
 - waitForAnimationToEnd
 - swipe: { direction: DOWN, duration: 800 }
+
+# 1:05 The outcome – the PDF report for the official file
+- tapOn: "Export as PDF"
+- runFlow:
+    when:
+      true: ${PLATFORM == 'ios'}
+    commands:
+      - extendedWaitUntil:             # share sheet with the finished PDF
+          visible: "Copy|Save to Files|More"
+          timeout: 20000
+      - extendedWaitUntil:
+          visible: "__hold__"
+          timeout: 4000
+          optional: true
+      - tapOn:                         # tap outside the sheet to close it
+          point: "50%,30%"
+      - extendedWaitUntil:
+          visible: "__hold__"
+          timeout: 1000
+          optional: true
+- runFlow:
+    when:
+      true: ${PLATFORM == 'android'}
+    commands:
+      - extendedWaitUntil:             # chooser: "Sharing 1 file … .pdf"
+          visible: "Print"
+          timeout: 20000
+      - extendedWaitUntil:
+          visible: "__hold__"
+          timeout: 2000
+          optional: true
+      - tapOn: "Print"                 # print preview = the rendered report page
+      - extendedWaitUntil:
+          visible: "Cancel"
+          timeout: 20000
+      - extendedWaitUntil:             # hold on the report
+          visible: "__hold__"
+          timeout: 4500
+          optional: true
+      - tapOn: "Cancel"
+- waitForAnimationToEnd
 - tapOn: "Back"
 - waitForAnimationToEnd
 
