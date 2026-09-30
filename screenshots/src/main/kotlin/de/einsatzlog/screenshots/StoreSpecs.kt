@@ -34,6 +34,9 @@ enum class Store(
 
     /** Must match MainViewController.IOS_PURCHASES_ENABLED (false for 0.1.4, true from 0.1.5). */
     APP_STORE(supportEnabled = true),
+
+    /** Shipaton / Devpost gallery: shows the Android release, which has the purchase. */
+    DEVPOST(supportEnabled = true),
 }
 
 /**
@@ -56,8 +59,11 @@ val IOS_IPHONE_69 = DeviceSpec("ios-iphone-6.9", 1320, 2868, 3f, Store.APP_STORE
 /** 6.5" iPhone (428x926 pt @3x) — App Store Connect asks for this tier when the 6.9" slot is not used. */
 val IOS_IPHONE_65 = DeviceSpec("ios-iphone-6.5", 1284, 2778, 3f, Store.APP_STORE)
 
+/** Devpost requires at least one 1179x2556 screenshot without a device frame (393x852 pt @3x). */
+val DEVPOST_PHONE = DeviceSpec("devpost", 1179, 2556, 3f, Store.DEVPOST)
+
 // iOS ships iPhone-only (TARGETED_DEVICE_FAMILY = 1), so no 13" iPad set.
-val ALL_DEVICES = listOf(PLAY_PHONE, PLAY_TABLET, IOS_IPHONE_69, IOS_IPHONE_65)
+val ALL_DEVICES = listOf(PLAY_PHONE, PLAY_TABLET, IOS_IPHONE_69, IOS_IPHONE_65, DEVPOST_PHONE)
 
 /**
  * Play and App Store Connect both key listings by these codes. They also
