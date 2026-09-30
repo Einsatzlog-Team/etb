@@ -15,8 +15,18 @@ import de.einsatzlog.app.ui.settings.SettingsScreen
 import de.einsatzlog.app.ui.support.SupportContent
 import de.einsatzlog.app.ui.support.SupportUiState
 
-/** One store image: a stable file name and the screen to draw. */
-class Shot(val order: Int, val name: String, val content: @Composable () -> Unit)
+/**
+ * One store image: a stable file name and the screen to draw. [content] gets
+ * `supportEnabled` — false for stores whose release ships without in-app
+ * purchases (the first iOS release), so no heart or support link is shown.
+ * [needsSupport] shots are skipped entirely for those stores.
+ */
+class Shot(
+    val order: Int,
+    val name: String,
+    val needsSupport: Boolean = false,
+    val content: @Composable (supportEnabled: Boolean) -> Unit,
+)
 
 // --- Screen states --------------------------------------------------------
 // Data lives in DemoData.kt; these just wrap it in the state each screen takes.
@@ -54,22 +64,23 @@ private val supportState = SupportUiState.Loaded(
 // upload order, so the file prefix is the running order.
 
 val ALL_SHOTS: List<Shot> = listOf(
-    Shot(1, "home") {
+    Shot(1, "home") { supportEnabled ->
         HomeContent(
             state = homeState,
             snackbarHostState = SnackbarHostState(),
             onQueryChange = {}, onOpenEinsatz = {}, onDeleteEinsatz = {},
-            onCreateEinsatz = { _, _ -> }, onSeedDemo = {}, onOpenSupport = {}, onOpenSettings = {},
+            onCreateEinsatz = { _, _ -> }, onSeedDemo = {},
+            onOpenSupport = if (supportEnabled) ({}) else null, onOpenSettings = {},
         )
     },
-    Shot(2, "quick-entry") {
+    Shot(2, "quick-entry") { _ ->
         EntryFormContent(
             state = entryFormState,
             onType = {}, onSource = {}, onTarget = {}, onMessage = {},
             onBackdate = {}, onResetTime = {}, onSubmit = {}, onBack = {},
         )
     },
-    Shot(3, "logbook") {
+    Shot(3, "logbook") { _ ->
         LogbookContent(
             einsatz = demoZimmerbrand,
             entries = demoEntries,
@@ -79,13 +90,13 @@ val ALL_SHOTS: List<Shot> = listOf(
             onBack = {}, onExport = {}, onToggleClose = {}, onNewEntry = {},
         )
     },
-    Shot(4, "support") {
+    Shot(4, "support", needsSupport = true) { _ ->
         SupportContent(state = supportState, onPurchase = {}, onRestore = {}, onBack = {})
     },
-    Shot(5, "settings") {
+    Shot(5, "settings") { supportEnabled ->
         SettingsScreen(
             versionName = PREVIEW_VERSION,
-            onBack = {}, onOpenSupport = {}, onOpenPrivacy = {},
+            onBack = {}, onOpenSupport = if (supportEnabled) ({}) else null, onOpenPrivacy = {},
             onOpenImprint = {}, onOpenLicenses = {},
         )
     },

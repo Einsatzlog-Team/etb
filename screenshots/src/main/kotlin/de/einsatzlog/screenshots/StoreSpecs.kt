@@ -26,7 +26,15 @@ data class DeviceSpec(
     val heightDp: Int get() = (heightPx / density).toInt()
 }
 
-enum class Store { PLAY, APP_STORE }
+enum class Store(
+    /** Whether this store's current release has the support screen / in-app purchases. */
+    val supportEnabled: Boolean,
+) {
+    PLAY(supportEnabled = true),
+
+    /** First iOS release ships without in-app purchases (MainViewController.IOS_PURCHASES_ENABLED). */
+    APP_STORE(supportEnabled = false),
+}
 
 /**
  * Phone at exactly 9:16 (1440/2560), which satisfies every published version of

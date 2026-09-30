@@ -19,7 +19,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun HomeScreen(
     onOpenEinsatz: (String) -> Unit,
-    onOpenSupport: () -> Unit,
+    onOpenSupport: (() -> Unit)?,
     onOpenSettings: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {

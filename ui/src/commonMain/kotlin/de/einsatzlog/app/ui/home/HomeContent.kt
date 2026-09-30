@@ -77,7 +77,8 @@ fun HomeContent(
     onDeleteEinsatz: (EinsatzEntity) -> Unit,
     onCreateEinsatz: (String, String?) -> Unit,
     onSeedDemo: (String) -> Unit,
-    onOpenSupport: () -> Unit,
+    /** Null hides the support entry (builds without in-app purchases). */
+    onOpenSupport: (() -> Unit)?,
     onOpenSettings: () -> Unit,
 ) {
     var showCreateDialog by remember { mutableStateOf(false) }
@@ -88,8 +89,10 @@ fun HomeContent(
             TopAppBar(
                 title = { Text(stringResource(Res.string.app_name)) },
                 actions = {
-                    IconButton(onClick = onOpenSupport) {
-                        Icon(Icons.Filled.FavoriteBorder, contentDescription = stringResource(Res.string.support_title))
+                    if (onOpenSupport != null) {
+                        IconButton(onClick = onOpenSupport) {
+                            Icon(Icons.Filled.FavoriteBorder, contentDescription = stringResource(Res.string.support_title))
+                        }
                     }
                     IconButton(onClick = onOpenSettings) {
                         Icon(Icons.Filled.Settings, contentDescription = stringResource(Res.string.settings_title))

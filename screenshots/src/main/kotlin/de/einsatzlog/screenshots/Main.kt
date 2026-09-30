@@ -31,9 +31,10 @@ fun main() {
         for (locale in ALL_LOCALES) {
             for (dark in listOf(false, true)) {
                 for (shot in ALL_SHOTS) {
+                    if (shot.needsSupport && !device.store.supportEnabled) continue
                     val target = outputPath(outputRoot, device, locale, dark, shot)
                     renderToFile(device, locale, dark, target) {
-                        EinsatzlogTheme(darkTheme = dark) { shot.content() }
+                        EinsatzlogTheme(darkTheme = dark) { shot.content(device.store.supportEnabled) }
                     }
                     written++
                 }

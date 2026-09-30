@@ -29,15 +29,21 @@ object Routes {
     fun newEntry(id: String) = "einsatz/$id/new-entry"
 }
 
+/**
+ * @param supportEnabled false hides every entry to the support screen — used by
+ * the first iOS release, which ships without in-app purchases.
+ */
 @Composable
-fun App() {
+fun App(supportEnabled: Boolean = true) {
     EinsatzlogTheme {
         val navController = rememberNavController()
+        val openSupport: (() -> Unit)? =
+            if (supportEnabled) ({ navController.navigate(Routes.SUPPORT) }) else null
         NavHost(navController = navController, startDestination = Routes.HOME) {
             composable(Routes.HOME) {
                 HomeScreen(
                     onOpenEinsatz = { id -> navController.navigate(Routes.einsatz(id)) },
-                    onOpenSupport = { navController.navigate(Routes.SUPPORT) },
+                    onOpenSupport = openSupport,
                     onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                 )
             }
@@ -48,7 +54,7 @@ fun App() {
                 SettingsScreen(
                     versionName = appVersionName,
                     onBack = { navController.popBackStack() },
-                    onOpenSupport = { navController.navigate(Routes.SUPPORT) },
+                    onOpenSupport = openSupport,
                     onOpenPrivacy = { navController.navigate(Routes.PRIVACY) },
                     onOpenImprint = { navController.navigate(Routes.IMPRINT) },
                     onOpenLicenses = { navController.navigate(Routes.LICENSES) },

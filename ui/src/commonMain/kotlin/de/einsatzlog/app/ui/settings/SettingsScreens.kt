@@ -74,7 +74,8 @@ fun SettingsScaffold(
 fun SettingsScreen(
     versionName: String,
     onBack: () -> Unit,
-    onOpenSupport: () -> Unit,
+    /** Null hides the support entry (builds without in-app purchases). */
+    onOpenSupport: (() -> Unit)?,
     onOpenPrivacy: () -> Unit,
     onOpenImprint: () -> Unit,
     onOpenLicenses: () -> Unit,
@@ -94,8 +95,10 @@ fun SettingsScreen(
                 )
             }
             Card(modifier = Modifier.fillMaxWidth()) {
-                SettingsLink(Res.string.settings_support, onOpenSupport)
-                HorizontalDivider()
+                if (onOpenSupport != null) {
+                    SettingsLink(Res.string.settings_support, onOpenSupport)
+                    HorizontalDivider()
+                }
                 SettingsLink(Res.string.settings_website) { uriHandler.openUri("https://einsatzlog.de") }
                 HorizontalDivider()
                 SettingsLink(Res.string.settings_contact) { uriHandler.openUri("mailto:kontakt@einsatzlog.de") }
