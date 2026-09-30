@@ -1,0 +1,84 @@
+# Demo video flow (Shipaton, ~2 min script). Driven by record-demo.sh, which
+# sets theme/locale and records the screen; this file only taps through the app.
+# PLATFORM (android|ios) and VIDEO (output name, no extension) are passed with -e;
+# the purchase runs on Android only. Recording starts once the empty app is on screen.
+appId: de.einsatzlog.app
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "No incidents yet"
+    timeout: 30000
+- waitForAnimationToEnd
+- startRecording: ${VIDEO}
+
+# 0:00 Hook – the empty app, then the demo incident
+- tapOn: "View demo incident"
+- tapOn: "Demo: Room fire at 45 Main Street"
+- waitForAnimationToEnd
+- swipe: { start: "50%, 75%", end: "50%, 30%", duration: 2500 }
+- swipe: { start: "50%, 75%", end: "50%, 30%", duration: 2500 }
+- tapOn: "Back"
+
+# 0:20 Live demo – new incident, two quick entries
+- tapOn: "Create incident"
+- tapOn: "Incident name"
+- inputText: "Car fire on the B3"
+- tapOn: "Create"
+- runFlow:
+    when:
+      visible: "Car fire on the B3"
+    commands:
+      - tapOn: "Car fire on the B3"
+- tapOn: "New entry"
+- tapOn: "Situation report|Lagemeldung"
+- tapOn: "Florian 1"          # learned call sign, one tap
+- tapOn: "To"
+- inputText: "Leitstelle"
+- scrollUntilVisible:
+    element: "Message"
+    direction: DOWN
+- tapOn: "Message"
+- inputText: "On scene. Car fully involved, starting attack."
+- tapOn: "Add entry"
+- waitForAnimationToEnd
+- tapOn: "New entry"
+- tapOn: "Order|Auftrag"
+- tapOn: "Einsatzleiter"
+- tapOn: "To"
+- inputText: "Florian 1"
+- scrollUntilVisible:
+    element: "Message"
+    direction: DOWN
+- tapOn: "Message"
+- inputText: "Second hose line, secure the road."
+- tapOn: "Add entry"
+- waitForAnimationToEnd
+- swipe: { direction: DOWN, duration: 800 }
+- tapOn: "Back"
+- waitForAnimationToEnd
+
+# 1:20 Support & RevenueCat – Android Play sandbox only
+- runFlow:
+    when:
+      true: ${PLATFORM == 'android'}
+    commands:
+      - tapOn: "Support"
+      - extendedWaitUntil:
+          visible: "Small tip"
+          timeout: 30000
+      - waitForAnimationToEnd
+      - tapOn: "Small tip"
+      - extendedWaitUntil:
+          visible: "Buy|1-tap buy|Kaufen"
+          timeout: 30000
+      - tapOn: "Buy|1-tap buy|Kaufen"
+      - extendedWaitUntil:
+          visible: "Thank you for your support!"
+          timeout: 60000
+      - waitForAnimationToEnd
+      - tapOn: "Back"
+
+# 1:50 Outro – rest on the home screen
+- waitForAnimationToEnd
+- stopRecording

@@ -59,15 +59,17 @@ fun QuickEntryForm(
         verticalArrangement = Arrangement.spacedBy(Spacing.m),
     ) {
         // Zeit: auto, not editable — corrections only via backdate chips.
+        // Time and chips on separate lines: in one row the chips wrapped their
+        // labels ("n/ow") on narrow phones.
+        Text(
+            text = stringResource(Res.string.entry_time_label) + " " + formatTime(timestampEpochMs),
+            style = MaterialTheme.typography.titleLarge,
+            fontFamily = FontFamily.Monospace,
+        )
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(Spacing.s),
         ) {
-            Text(
-                text = stringResource(Res.string.entry_time_label) + " " + formatTime(timestampEpochMs),
-                style = MaterialTheme.typography.titleLarge,
-                fontFamily = FontFamily.Monospace,
-            )
             AssistChip(onClick = { onBackdate(1) }, label = { Text(stringResource(Res.string.entry_backdate_1)) })
             AssistChip(onClick = { onBackdate(5) }, label = { Text(stringResource(Res.string.entry_backdate_5)) })
             AssistChip(onClick = onResetTime, label = { Text(stringResource(Res.string.entry_backdate_reset)) })
