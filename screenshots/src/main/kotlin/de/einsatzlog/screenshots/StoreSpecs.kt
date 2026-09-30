@@ -32,8 +32,8 @@ enum class Store(
 ) {
     PLAY(supportEnabled = true),
 
-    /** First iOS release ships without in-app purchases (MainViewController.IOS_PURCHASES_ENABLED). */
-    APP_STORE(supportEnabled = false),
+    /** Must match MainViewController.IOS_PURCHASES_ENABLED (false for 0.1.4, true from 0.1.5). */
+    APP_STORE(supportEnabled = true),
 }
 
 /**
