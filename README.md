@@ -16,7 +16,6 @@ Website and devlog: [einsatzlog.de](https://einsatzlog.de) · Developer blog (ar
 
 - **Android** – on Google Play
 - **iOS** – iPhone, in App Store review
-- **F-Droid** – not published by us. The code is being prepared for a fully open-source build ([#1](https://github.com/Einsatzlog-Team/etb/issues/1)); pull requests that improve it are welcome.
 
 ## How it's built
 
