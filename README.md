@@ -1,48 +1,80 @@
 # Einsatzlog
 
-**A digital operations logbook (Einsatztagebuch) for fire departments — free forever, offline-first, built in public.**
+**A free, offline incident logbook (*Einsatztagebuch*) for fire departments.**
 
-Roughly a million volunteer firefighters in Germany still document incident radio traffic on paper. Einsatzlog digitizes the operational record: create an Einsatz, log radio messages in seconds under stress, and export the legally relevant incident report as PDF. Data stays on the device.
+During an incident, one person documents every radio message: who called whom, what was said, and exactly when. In most volunteer fire departments this still happens on paper. Einsatzlog turns it into a fast, trustworthy digital record – on the phone or tablet the station already has.
 
-- 📱 Android + iOS (Kotlin Multiplatform / Compose Multiplatform)
-- 🔒 Offline-first, privacy-respecting — your data never leaves the device (optional crash reports in the store build)
-- 🆓 Free forever, funded by voluntary supporter donations
-- 🌍 German + English
-- 🔓 Open source (MIT) — from v0.2 the app is developed in the open in this repo
+- **An entry in seconds.** The timestamp is captured when the form opens and cannot be edited; corrections only go backwards (−1 / −5 min). Colour-coded message types (Funkspruch, Lagemeldung, Auftrag, Anforderung, Dokumentation) and call-sign suggestions learned from your own radio traffic.
+- **A record you can trust.** Closing an incident makes the log read-only; reopening is written into the log automatically.
+- **The report in one tap.** A print-ready PDF for the official file, any time during or after an incident.
+- **Nothing leaves the device.** No account, no server, no ads, no tracking. Works offline. German and English, light and dark theme, touch targets sized for gloves.
+- **Free, forever.** Every feature is free. The store builds offer an optional tip that supports development and unlocks nothing.
 
-## Origin & history — RevenueCat Shipaton 2026
+Website and devlog: [einsatzlog.de](https://einsatzlog.de) · Developer blog (architecture, decisions, code): [einsatzlog.de/en/blog](https://einsatzlog.de/en/blog/)
 
-**Einsatzlog started as a prototype that was developed privately over the last ten months.** It has now
-gone open source and public: **v0.1.2 is a code-only snapshot** of that prototype, imported here as a
-single commit *without* the private commit history (which contained personal setup and was never meant
-to be published). It is released as the first store version inside the
-[Shipaton 2026](https://revenuecat-shipaton-2026.devpost.com/) window.
+## Platforms
 
-**From v0.2 on, the successor app is developed in the open in this repository** — signed commits and
-specs before code — reusing only the parts of v0.1.2 we choose to keep and documenting
-each reuse-or-rewrite decision.
+- **Android** – on Google Play
+- **iOS** – iPhone, in App Store review
+- **F-Droid** – a fully open-source build is in preparation, see [docs/FDROID-PLAN.md](docs/FDROID-PLAN.md)
 
-## Status
+## How it's built
 
-🏗 **Feature-complete v1, heading into its first store release.** All five vertical slices are built for
-Android + iOS in German and English: Einsatz CRUD, sub-10-second quick entry, a supporter ("show
-support") screen powered by RevenueCat, PDF export, and settings + compliance.
+One Kotlin codebase, native on Android and iOS:
+
+- **Kotlin Multiplatform + Compose Multiplatform** – every screen and all logic live in shared code; only the PDF renderer (Android `PdfDocument`, iOS CoreGraphics), the database location and a thin SwiftUI host are platform-specific.
+- **Room (KMP)** with the bundled SQLite driver – offline storage on both platforms.
+- **Atomic design** for the UI (particles → atoms → molecules → organisms → screens) in the shared `:ui` module.
+- **Koin** for dependency injection; services sit behind interfaces (`SupportRepository`, `SuggestionProvider`, `LogbookExporter`, `CrashReporter`).
+- **Two Android flavors:** `store` (Google Play, optional tip via RevenueCat) and `foss` (no purchases).
+- **Tooling in the repo:** `:screenshots` renders the store screenshots headlessly from the real Compose screens; `video/` records the demo video with Maestro on Android and iOS.
 
 ## Build
 
-- Android: `./gradlew assembleStoreDebug` (Play flavor) · `./gradlew assembleFossDebug` (no proprietary SDKs)
-- iOS: open `iosApp/iosApp.xcodeproj` in Xcode (needs a Mac)
-- Tests: `./gradlew :composeApp:testStoreDebugUnitTest`
-- Release signing reads a gitignored `keystore.properties`; RevenueCat uses *public* SDK keys only.
-- RevenueCat keys are not in the repo. Without them the build works and the support screen shows
-  "unavailable". To enable purchases, add to the gitignored `local.properties` (or pass
-  `-Prevenuecat.androidKey=…` / set `REVENUECAT_ANDROID_KEY`):
-  ```properties
-  revenuecat.androidKey=goog_…
-  revenuecat.iosKey=appl_…
-  ```
-  A Test Store key (`test_…`) works for local testing; release builds refuse it.
+Requirements: JDK 21, Android SDK; a Mac with Xcode for iOS.
+
+```bash
+./gradlew :composeApp:assembleStoreDebug       # Android, store flavor
+./gradlew :composeApp:assembleFossDebug        # Android, FOSS flavor
+./gradlew :composeApp:testStoreDebugUnitTest   # unit tests
+./gradlew :screenshots:screenshots             # store screenshots → screenshots/build/store
+```
+
+iOS: open `iosApp/iosApp.xcodeproj` in Xcode and run.
+
+**In-app purchase keys are not part of the repository.** Without them the app builds and runs normally; the support screen shows that purchases aren't available. To enable purchases, add the RevenueCat public SDK keys to the gitignored `local.properties` (or pass `-Prevenuecat.androidKey=…`, or set `REVENUECAT_ANDROID_KEY` / `REVENUECAT_IOS_KEY`):
+
+```properties
+revenuecat.androidKey=goog_…
+revenuecat.iosKey=appl_…
+```
+
+A RevenueCat Test Store key (`test_…`) works for local testing; release builds refuse it. Release signing reads a gitignored `keystore.properties`.
+
+## Branches
+
+The repository follows **gitflow**:
+
+| Branch | Purpose |
+|---|---|
+| `main` | Released versions only. Every release is tagged (`v0.1.4`, …). |
+| `develop` | The current state of the app – stable, the base for all new work. |
+| `feature/*` | New features, branched from and merged back into `develop` (e.g. `feature/tablet-layout`). |
+| `release/*` | Release preparation, branched from `develop`, merged into `main` and back into `develop`. |
+| `hotfix/*` | Urgent fixes on a released version, branched from `main`. |
+
+## Roadmap
+
+- Optional tip on iOS
+- Tablet layouts (list, logbook and a permanent entry pane side by side)
+- The fully open-source build on F-Droid
+- The vehicle and crew overview from the original sketches, entry templates
+- Private, on-device suggestions that learn a station's radio language – without data leaving the device
+
+## Contributing
+
+Issues and pull requests are welcome – please branch from `develop`. Read the [Code of Conduct](./CODE_OF_CONDUCT.md) first. Domain terms (Einsatz, Funkspruch, Lagemeldung …) stay German in every language – they're the words used on the radio.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+[MIT](./LICENSE)
