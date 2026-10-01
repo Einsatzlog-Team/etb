@@ -7,9 +7,9 @@ import de.einsatzlog.app.support.RevenueCatConfig
 import org.koin.core.context.startKoin
 import platform.UIKit.UIViewController
 
-// The first iOS release ships without in-app purchases: no support screen,
-// RevenueCat never configured. Flip to true to bring the support screen back.
-private const val IOS_PURCHASES_ENABLED = false
+// 0.1.4 (the first iOS release) shipped with this false: no support screen,
+// RevenueCat never configured. 0.1.5 brings the in-app purchase back.
+private const val IOS_PURCHASES_ENABLED = true
 
 fun initKoin() {
     startKoin {

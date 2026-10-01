@@ -43,7 +43,7 @@ internal fun PreviewSurface(
 val previewEinsatzActive = EinsatzEntity(
     id = "e1",
     name = "Übung Brandhaus",
-    description = "Jahresübung der FF Traisa",
+    description = "Jahresübung der Feuerwehr",
     startedAtEpochMs = 1_752_998_400_000,
     endedAtEpochMs = null,
     createdAtEpochMs = 1_752_998_400_000,

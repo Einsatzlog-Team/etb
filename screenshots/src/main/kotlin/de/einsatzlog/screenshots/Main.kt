@@ -66,6 +66,7 @@ private fun outputPath(
             root,
             "appstore/${locale.storeCode}/$themeDir/${device.id}/$fileName",
         )
+        Store.DEVPOST -> File(root, "devpost/${locale.storeCode}/$themeDir/$fileName")
     }.normalizedPath()
 }
 

@@ -31,13 +31,8 @@ class Shot(
 // --- Screen states --------------------------------------------------------
 // Data lives in DemoData.kt; these just wrap it in the state each screen takes.
 
-private val homeState = HomeUiState(
-    einsaetze = demoEinsaetze,
-    entryCounts = demoEntryCounts,
-    query = "",
-    loaded = true,
-    isEmpty = false,
-)
+// First-run home: empty list with the "create" and "view demo" invitation.
+private val homeState = HomeUiState(loaded = true, isEmpty = true)
 
 private val entryFormState = EntryFormState(
     // 19:42 + 74 min — the next entry, mid-typing, with the heuristic
