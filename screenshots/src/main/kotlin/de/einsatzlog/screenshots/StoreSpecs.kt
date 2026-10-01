@@ -35,7 +35,7 @@ enum class Store(
     /** Must match MainViewController.IOS_PURCHASES_ENABLED (false for 0.1.4, true from 0.1.5). */
     APP_STORE(supportEnabled = true),
 
-    /** Shipaton / Devpost gallery: shows the Android release, which has the purchase. */
+    /** Devpost gallery: shows the Android release, which has the purchase. */
     DEVPOST(supportEnabled = true),
 }
 

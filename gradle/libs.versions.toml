@@ -11,7 +11,7 @@ koin = "4.2.2"
 kotlinx-coroutines = "1.11.0"
 kotlinx-datetime = "0.8.0"
 androidx-activityCompose = "1.13.0"
-jb-lifecycle = "2.10.0" # 2.11.0 requires AGP 9.1+/compileSdk 37 — revisit with the AGP 9 migration post-Shipaton
+jb-lifecycle = "2.10.0" # 2.11.0 requires AGP 9.1+/compileSdk 37 — revisit with the AGP 9 migration
 jb-navigation = "2.9.2"
 aboutlibraries = "14.2.1" # 15.x requires compileSdk 37/AGP 9.1 — bump with the AGP 9 migration
 

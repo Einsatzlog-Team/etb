@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Records the Shipaton demo video: Android + iOS, light + dark, English, no audio.
+# Records the demo video: Android + iOS, light + dark, English, no audio.
 #   video/record-demo.sh [android|ios|all]      output: ~/Desktop/Einsatzlog-Demo-Videos/
 # Needs: Maestro (~/.maestro/bin), a booted iPhone simulator with the app built,
 # the Pixel_8a emulator (Play image, signed in as a license tester) with the app installed.

@@ -1,4 +1,4 @@
-# Demo video flow (Shipaton, ~2 min script). Driven by record-demo.sh, which
+# Demo video flow (~2 min script). Driven by record-demo.sh, which
 # sets theme/locale and records the screen; this file only taps through the app.
 # PLATFORM (android|ios) and VIDEO (output name, no extension) are passed with -e;
 # the purchase runs on Android only. Recording starts once the empty app is on screen.
