@@ -16,7 +16,7 @@ Website and devlog: [einsatzlog.de](https://einsatzlog.de) · Developer blog (ar
 
 - **Android** – on Google Play
 - **iOS** – iPhone, in App Store review
-- **F-Droid** – a fully open-source build is in preparation, see [docs/FDROID-PLAN.md](docs/FDROID-PLAN.md)
+- **F-Droid** – not published by us. The code is being prepared for a fully open-source build ([#1](https://github.com/Einsatzlog-Team/etb/issues/1)); pull requests that improve it are welcome.
 
 ## How it's built
 
@@ -67,7 +67,7 @@ The repository follows **gitflow**:
 
 - Optional tip on iOS
 - Tablet layouts (list, logbook and a permanent entry pane side by side)
-- The fully open-source build on F-Droid
+- Purchases in a separate module, so the FOSS build links no proprietary code ([#1](https://github.com/Einsatzlog-Team/etb/issues/1))
 - The vehicle and crew overview from the original sketches, entry templates
 - Private, on-device suggestions that learn a station's radio language – without data leaving the device
 
