@@ -21,6 +21,7 @@ fun HomeScreen(
     onOpenEinsatz: (String) -> Unit,
     onOpenSupport: (() -> Unit)?,
     onOpenSettings: () -> Unit,
+    selectedEinsatzId: String? = null,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -53,5 +54,6 @@ fun HomeScreen(
         onSeedDemo = viewModel::seedDemo,
         onOpenSupport = onOpenSupport,
         onOpenSettings = onOpenSettings,
+        selectedEinsatzId = selectedEinsatzId,
     )
 }

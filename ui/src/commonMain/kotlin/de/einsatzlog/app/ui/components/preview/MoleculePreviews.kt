@@ -22,6 +22,7 @@ private fun EinsatzListItemPreviewLight() = PreviewSurface(dark = false, width =
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         EinsatzListItem(previewEinsatzActive, entryCount = 9, onClick = {}, onLongClick = {})
         EinsatzListItem(previewEinsatzClosed, entryCount = 3, onClick = {}, onLongClick = {})
+        EinsatzListItem(previewEinsatzActive, entryCount = 9, onClick = {}, onLongClick = {}, selected = true)
     }
 }
 

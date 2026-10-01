@@ -70,6 +70,7 @@ fun App(supportEnabled: Boolean = true) {
                                 onOpenEinsatz = { id -> selected = id },
                                 onOpenSupport = openSupport,
                                 onOpenSettings = { navController.navigate(Routes.SETTINGS) },
+                                selectedEinsatzId = selected,
                             )
                         },
                         detail = {

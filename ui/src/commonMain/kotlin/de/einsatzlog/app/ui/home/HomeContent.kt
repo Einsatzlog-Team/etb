@@ -80,6 +80,8 @@ fun HomeContent(
     /** Null hides the support entry (builds without in-app purchases). */
     onOpenSupport: (() -> Unit)?,
     onOpenSettings: () -> Unit,
+    /** Incident shown in the detail pane (tablet layout); null on phones. */
+    selectedEinsatzId: String? = null,
 ) {
     var showCreateDialog by remember { mutableStateOf(false) }
     val demoName = stringResource(Res.string.home_demo_name)
@@ -157,6 +159,7 @@ fun HomeContent(
                             einsatz = einsatz,
                             entryCount = state.entryCounts[einsatz.id] ?: 0,
                             onClick = { onOpenEinsatz(einsatz.id) },
+                            selected = einsatz.id == selectedEinsatzId,
                             onLongClick = { menuOpen = true },
                         )
                         DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
