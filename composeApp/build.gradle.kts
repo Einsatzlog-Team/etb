@@ -156,7 +156,8 @@ android {
     }
 
     // `store` = Play/App Store build (Crashlytics + RevenueCat land here in later slices).
-    // `foss` = no proprietary services, F-Droid-compatible (see specs/004 for the seam strategy).
+    // `foss` = no purchases (NoopSupportRepository). The purchase SDK is still on the classpath;
+    // moving it into its own module so this flavor links no proprietary code is issue #1.
     flavorDimensions += "distribution"
     productFlavors {
         create("store") {
