@@ -34,7 +34,7 @@ class Shot(
 // First-run home: empty list with the "create" and "view demo" invitation.
 private val homeState = HomeUiState(loaded = true, isEmpty = true)
 
-private val entryFormState = EntryFormState(
+internal val entryFormState = EntryFormState(
     // 19:42 + 74 min — the next entry, mid-typing, with the heuristic
     // provider's suggestions already narrowed to this Einsatz's call signs.
     timestampEpochMs = demoEntries.last().timestampEpochMs + 4 * 60_000L,

@@ -30,7 +30,7 @@ fun main() {
     for (device in ALL_DEVICES) {
         for (locale in ALL_LOCALES) {
             for (dark in listOf(false, true)) {
-                for (shot in ALL_SHOTS) {
+                for (shot in if (device.tablet) TABLET_SHOTS else ALL_SHOTS) {
                     if (shot.needsSupport && !device.store.supportEnabled) continue
                     val target = outputPath(outputRoot, device, locale, dark, shot)
                     renderToFile(device, locale, dark, target) {
@@ -55,7 +55,9 @@ private fun outputPath(
     dark: Boolean,
     shot: Shot,
 ): File {
-    val fileName = "%02d_%s.png".format(shot.order, shot.name)
+    // Both tablet orientations share Play's tenInchScreenshots folder.
+    val orientation = if (device.tablet && device.widthPx > device.heightPx) "-landscape" else ""
+    val fileName = "%02d_%s%s.png".format(shot.order, shot.name, orientation)
     val themeDir = if (dark) "dark" else "."
     return when (device.store) {
         Store.PLAY -> File(
