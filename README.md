@@ -66,7 +66,7 @@ The repository follows **gitflow**:
 
 - Optional tip on iOS
 - Tablet layouts (list, logbook and a permanent entry pane side by side)
-- Purchases in a separate module, so the FOSS build links no proprietary code ([#1](https://github.com/Einsatzlog-Team/etb/issues/1))
+- Purchases in a separate module, so the FOSS build links no proprietary code ([#2](https://github.com/Einsatzlog-Team/etb/issues/2))
 - The vehicle and crew overview from the original sketches, entry templates
 - Private, on-device suggestions that learn a station's radio language – without data leaving the device
 

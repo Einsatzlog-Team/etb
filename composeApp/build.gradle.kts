@@ -157,7 +157,7 @@ android {
 
     // `store` = Play/App Store build (Crashlytics + RevenueCat land here in later slices).
     // `foss` = no purchases (NoopSupportRepository). The purchase SDK is still on the classpath;
-    // moving it into its own module so this flavor links no proprietary code is issue #1.
+    // moving it into its own module so this flavor links no proprietary code is issue #2.
     flavorDimensions += "distribution"
     productFlavors {
         create("store") {
