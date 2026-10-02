@@ -25,7 +25,7 @@ One Kotlin codebase, native on Android and iOS:
 - **Room (KMP)** with the bundled SQLite driver – offline storage on both platforms.
 - **Atomic design** for the UI (particles → atoms → molecules → organisms → screens) in the shared `:ui` module.
 - **Koin** for dependency injection; services sit behind interfaces (`SupportRepository`, `SuggestionProvider`, `LogbookExporter`, `CrashReporter`).
-- **Two Android flavors:** `store` (Google Play, optional tip via RevenueCat) and `foss` (no purchases).
+- **Purchases in their own module:** `:purchases-revenuecat` is the only code that knows RevenueCat. iOS and the Android `store` flavor (Google Play, optional tip) link it; the `foss` flavor doesn't, so its APK contains no proprietary code – no Play Billing, Play Services or Firebase.
 - **Tooling in the repo:** `:screenshots` renders the store screenshots headlessly from the real Compose screens; `video/` records the demo video with Maestro on Android and iOS.
 
 ## Build
@@ -66,7 +66,6 @@ The repository follows **gitflow**:
 
 - Optional tip on iOS
 - Tablet layouts (list, logbook and a permanent entry pane side by side)
-- Purchases in a separate module, so the FOSS build links no proprietary code ([#2](https://github.com/Einsatzlog-Team/etb/issues/2))
 - The vehicle and crew overview from the original sketches, entry templates
 - Private, on-device suggestions that learn a station's radio language – without data leaving the device
 

@@ -9,8 +9,6 @@ import de.einsatzlog.app.data.db.AppDatabase
 import de.einsatzlog.app.suggestions.HeuristicSuggestionProvider
 import de.einsatzlog.app.suggestions.SuggestionProvider
 import de.einsatzlog.app.support.NoopSupportRepository
-import de.einsatzlog.app.support.RevenueCatConfig
-import de.einsatzlog.app.support.RevenueCatSupportRepository
 import de.einsatzlog.app.support.SupportRepository
 import de.einsatzlog.app.ui.entry.EntryFormViewModel
 import de.einsatzlog.app.ui.home.HomeViewModel
@@ -28,11 +26,12 @@ import org.koin.dsl.module
 expect val platformModule: Module
 
 /**
- * @param purchasesEnabled false for the foss flavor — RevenueCat is then
- * never selected nor initialized (spec 004).
+ * @param supportRepository provided by the platform: the RevenueCat
+ * implementation lives in `:purchases-revenuecat`, which shared code never
+ * links – iOS and the Android `store` flavor pass it in, `foss` passes the no-op.
  */
 @OptIn(ExperimentalUuidApi::class)
-fun appModule(purchasesEnabled: Boolean) = module {
+fun appModule(supportRepository: () -> SupportRepository = { NoopSupportRepository() }) = module {
     single<AppDatabase> {
         get<RoomDatabase.Builder<AppDatabase>>()
             .setDriver(BundledSQLiteDriver())
@@ -45,10 +44,7 @@ fun appModule(purchasesEnabled: Boolean) = module {
     single { EinsatzRepository(einsatzDao = get(), logEntryDao = get(), newId = { Uuid.random().toString() }) }
 
     single<CrashReporter> { NoopCrashReporter }
-    single<SupportRepository> {
-        if (purchasesEnabled && RevenueCatConfig.isConfigured) RevenueCatSupportRepository()
-        else NoopSupportRepository()
-    }
+    single<SupportRepository> { supportRepository() }
     single<SuggestionProvider> { HeuristicSuggestionProvider(logEntryDao = get()) }
 
     viewModel { HomeViewModel(repository = get()) }

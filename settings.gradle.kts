@@ -29,5 +29,6 @@ dependencyResolutionManagement {
 }
 
 include(":ui")
+include(":purchases-revenuecat")
 include(":composeApp")
 include(":screenshots")
